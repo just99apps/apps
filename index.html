@@ -4,433 +4,261 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>99Apps | Modern Android Apps</title>
-
+<title>99Apps</title>
 <meta name="description"
 content="99Apps develops simple, powerful and beautifully designed Android applications.">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+    
 <style>
 
 :root{
-    --bg:#080b14;
-    --card:rgba(255,255,255,0.06);
-    --border:rgba(255,255,255,0.08);
+    --bg:#0f172a;
+    --card:#1e293b;
     --text:#ffffff;
-    --muted:#9ca3af;
-    --primary:#7c3aed;
-    --secondary:#4f46e5;
+    --muted:#94a3b8;
+    --accent:#6366f1;
 }
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
+    font-family:system-ui,-apple-system,sans-serif;
 }
 
 body{
-    font-family:'Poppins',sans-serif;
     background:var(--bg);
     color:var(--text);
-    overflow-x:hidden;
+    min-height:100vh;
 }
 
-/* Animated Background */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:
-    radial-gradient(circle at 20% 20%, rgba(124,58,237,.35), transparent 30%),
-    radial-gradient(circle at 80% 30%, rgba(79,70,229,.35), transparent 30%),
-    radial-gradient(circle at 50% 80%, rgba(99,102,241,.25), transparent 35%);
-    z-index:-1;
-}
-
-/* Navbar */
-
-nav{
-    width:100%;
-    padding:20px 8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    position:sticky;
-    top:0;
-    backdrop-filter:blur(20px);
-    background:rgba(8,11,20,.7);
-    border-bottom:1px solid var(--border);
-    z-index:1000;
-}
-
-.logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
-
-.logo img{
-    width:48px;
-    height:48px;
-    border-radius:50%;
-}
-
-.logo h2{
-    font-size:1.4rem;
-}
-
-nav ul{
-    display:flex;
-    gap:30px;
-    list-style:none;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    opacity:.85;
-}
-
-nav a:hover{
-    opacity:1;
-}
-
-/* Hero */
-
-.hero{
-    min-height:90vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:40px 20px;
-}
-
-.hero-content{
-    max-width:900px;
-}
-
-.hero h1{
-    font-size:clamp(3rem,7vw,6rem);
-    line-height:1.1;
-    margin-bottom:20px;
-}
-
-.hero h1 span{
-    background:linear-gradient(90deg,#8b5cf6,#60a5fa);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.hero p{
-    color:var(--muted);
-    font-size:1.1rem;
-    max-width:700px;
+.container{
+    max-width:1200px;
     margin:auto;
+    padding:30px 20px;
 }
 
-.hero-btn{
-    margin-top:35px;
-}
+/* Header */
 
-.btn{
-    display:inline-block;
-    padding:15px 30px;
-    border-radius:50px;
-    text-decoration:none;
-    color:white;
-    font-weight:600;
-    background:linear-gradient(90deg,#7c3aed,#4f46e5);
-    transition:.3s;
-}
-
-.btn:hover{
-    transform:translateY(-3px);
-}
-
-/* Stats */
-
-.stats{
-    width:90%;
-    max-width:1100px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:20px;
-}
-
-.stat{
-    background:var(--card);
-    backdrop-filter:blur(20px);
-    border:1px solid var(--border);
-    padding:30px;
-    border-radius:20px;
-    text-align:center;
-}
-
-.stat h2{
-    font-size:2rem;
-}
-
-/* Sections */
-
-section{
-    padding:100px 8%;
-}
-
-.title{
+.header{
     text-align:center;
     margin-bottom:50px;
 }
 
-.title h2{
-    font-size:2.5rem;
+.logo{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:15px;
+    border:3px solid rgba(255,255,255,.1);
 }
 
-/* Featured App */
-
-.featured{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
-    align-items:center;
+.brand{
+    font-size:2rem;
+    font-weight:700;
 }
 
-.featured-card{
-    background:var(--card);
-    border:1px solid var(--border);
-    backdrop-filter:blur(20px);
-    border-radius:30px;
-    padding:40px;
-}
-
-.featured img{
-    width:140px;
-    height:140px;
-    border-radius:30px;
-    margin-bottom:20px;
-}
-
-.featured p{
+.subtitle{
     color:var(--muted);
-    margin:15px 0 25px;
-}
-
-.phone{
-    text-align:center;
-}
-
-.phone img{
-    width:280px;
-    max-width:100%;
+    margin-top:8px;
 }
 
 /* Apps Grid */
 
 .apps-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
 }
 
-.app{
+/* App Card */
+
+.app-card{
     background:var(--card);
-    border:1px solid var(--border);
-    backdrop-filter:blur(20px);
-    border-radius:25px;
-    padding:30px;
-    transition:.3s;
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+    transition:.25s;
 }
 
-.app:hover{
-    transform:translateY(-8px);
+.app-card:hover{
+    transform:translateY(-5px);
 }
 
 .app-icon{
-    width:70px;
-    height:70px;
-    border-radius:18px;
+    width:90px;
+    height:90px;
+    border-radius:22px;
+    object-fit:cover;
     margin-bottom:15px;
 }
 
-.app p{
+.app-name{
+    font-size:1.2rem;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.app-desc{
     color:var(--muted);
-    margin-top:10px;
+    font-size:.95rem;
+    margin-bottom:18px;
+    min-height:45px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    background:var(--accent);
+    color:white;
+    padding:10px 18px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.2s;
+}
+
+.btn:hover{
+    opacity:.9;
 }
 
 /* Footer */
 
-footer{
+.footer{
+    margin-top:60px;
+    padding:30px 20px;
     text-align:center;
-    padding:40px 20px;
-    border-top:1px solid var(--border);
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.footer a{
     color:var(--muted);
+    text-decoration:none;
+    margin:0 8px;
+}
+
+.footer a:hover{
+    color:white;
+}
+
+.footer span{
+    color:#64748b;
+}
+
+.footer p{
+    margin-top:15px;
+    color:#64748b;
+    font-size:.9rem;
 }
 
 /* Mobile */
 
-@media(max-width:900px){
+@media (max-width:600px){
 
-.featured{
-    grid-template-columns:1fr;
-}
+    .logo{
+        width:80px;
+        height:80px;
+    }
 
-nav ul{
-    display:none;
-}
+    .brand{
+        font-size:1.7rem;
+    }
 
-.hero h1{
-    font-size:3rem;
-}
-
+    .container{
+        padding:20px 15px;
+    }
 }
 
 </style>
 </head>
-
 <body>
 
-<nav>
-    <div class="logo">
-        <img src="brand_logo.jpg" alt="99Apps Logo">
-        <h2>99Apps</h2>
-    </div>
+<div class="container">
 
-    <ul>
-        <li><a href="#apps">Apps</a></li>
-        <li><a href="#featured">Featured</a></li>
-        <li><a href="#about">About</a></li>
-    </ul>
-</nav>
+    <!-- Brand Header -->
 
-<section class="hero">
-    <div class="hero-content">
-        <h1>Building <span>Simple & Powerful</span> Android Apps</h1>
+    <div class="header">
 
-        <p>
-            99Apps creates modern Android applications designed to make everyday life easier, faster and more productive.
-        </p>
+        <!-- Replace with your logo -->
+        <img src="images/logo.png"
+             alt="99Apps"
+             class="logo">
 
-        <div class="hero-btn">
-            <a href="#apps" class="btn">Explore Apps</a>
+        <div class="brand">99Apps</div>
+
+        <div class="subtitle">
+            Discover our Android apps
         </div>
-    </div>
-</section>
 
-<div class="stats">
-    <div class="stat">
-        <h2>1+</h2>
-        <p>Published Apps</p>
     </div>
 
-    <div class="stat">
-        <h2>100%</h2>
-        <p>User Focused</p>
-    </div>
+    <!-- Apps Grid -->
 
-    <div class="stat">
-        <h2>24/7</h2>
-        <p>Continuous Updates</p>
-    </div>
-</div>
+    <div class="apps-grid">
 
-<section id="featured">
+        <!-- Simple Torch -->
 
-    <div class="title">
-        <h2>Featured App</h2>
-    </div>
+        <div class="app-card">
 
-    <div class="featured">
+            <img src="images/simpletorch.png"
+                 alt="Simple Torch"
+                 class="app-icon">
 
-        <div class="featured-card">
+            <div class="app-name">
+                Simple Torch
+            </div>
 
-            <img src="images/simpletorch.png" alt="Simple Torch">
-
-            <h2>Simple Torch</h2>
-
-            <p>
-                Modern flashlight app featuring shake to toggle, quick launch, beautiful themes and instant flashlight access.
-            </p>
+            <div class="app-desc">
+                Modern flashlight with shake to toggle, themes and quick access.
+            </div>
 
             <a class="btn"
-            href="https://play.google.com/store/apps/details?id=com.apps99.simpletorch"
-            target="_blank">
-            Download on Google Play
+               href="https://play.google.com/store/apps/details?id=com.apps99.simpletorch"
+               target="_blank">
+               Open App
             </a>
 
         </div>
 
-        <div class="phone">
-            <img src="app_flashlight_logo.jpg" alt="">
+        <!-- Future App Example -->
+
+        <div class="app-card">
+
+            <div style="font-size:70px;margin-bottom:10px;">
+                🚀
+            </div>
+
+            <div class="app-name">
+                Coming Soon
+            </div>
+
+            <div class="app-desc">
+                More useful apps from 99Apps will appear here.
+            </div>
+
         </div>
 
     </div>
 
-</section>
+</div>
 
-<section id="apps">
+<!-- Footer -->
 
-    <div class="title">
-        <h2>Our Apps</h2>
-    </div>
+<footer class="footer">
 
-    <div class="apps-grid">
+    <a href="privacy-policy.html">
+        Privacy Policy
+    </a>
 
-        <div class="app">
-            <img class="app-icon"
-            src="app_flashlight_logo.jpg"">
+    <span>•</span>
 
-            <h3>Simple Torch</h3>
+    <a href="mailto:support@99apps.com">
+        Contact
+    </a>
 
-            <p>
-                Fast flashlight with modern design and smart controls.
-            </p>
-        </div>
+    <p>
+        © 2026 99Apps. All Rights Reserved.
+    </p>
 
-        <div class="app">
-            <div style="font-size:50px">🚀</div>
-
-            <h3>Coming Soon</h3>
-
-            <p>
-                More productivity, utility and finance apps are on the way.
-            </p>
-        </div>
-
-        <div class="app">
-            <div style="font-size:50px">📱</div>
-
-            <h3>Future App</h3>
-
-            <p>
-                Add your next Play Store app here.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-<section id="about">
-
-    <div class="title">
-        <h2>About 99Apps</h2>
-    </div>
-
-    <div style="max-width:800px;margin:auto;text-align:center;color:#9ca3af;">
-        We focus on creating lightweight, reliable and beautifully designed Android applications. Every app is built with simplicity, performance and user experience in mind.
-    </div>
-
-</section>
-
-<footer>
-    © 2026 99Apps • All Rights Reserved
 </footer>
 
 </body>
